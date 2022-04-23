@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "module": "es2020",
+    "outDir": "./build",
+    "target": "esnext",
+    "typeRoots": ["node_modules/@types"],
+  },
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "include": ["index.ts"],
+  "lib": ["es2019"],
+}
