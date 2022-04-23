@@ -57,7 +57,7 @@ export default (amount = "5") => {
           const pickedId = Number(answer);
 
           if (isNaN(pickedId) || pickedId < first || pickedId > last) {
-            console.error("Invalid branch selection");
+            console.log("Invalid branch selection");
 
             readline.close();
             return;
