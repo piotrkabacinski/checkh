@@ -9,9 +9,4 @@
   "exclude": ["node_modules", "src/*.spec.ts"],
   "include": ["./src/**.ts"],
   "lib": ["es2019"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
 }
