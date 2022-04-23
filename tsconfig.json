@@ -6,8 +6,8 @@
     "target": "esnext",
     "typeRoots": ["node_modules/@types"],
   },
-  "exclude": ["node_modules", "src/index.spec.ts"],
-  "include": ["index.ts"],
+  "exclude": ["node_modules", "src/*.spec.ts"],
+  "include": ["./src/**.ts"],
   "lib": ["es2019"],
   "ts-node": {
     "compilerOptions": {

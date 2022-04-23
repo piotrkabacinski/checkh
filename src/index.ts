@@ -1,3 +1,3 @@
-import checkh from "./checkh";
+import checkh from "./checkh.js";
 
 checkh(process.argv[2]);

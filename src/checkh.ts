@@ -66,7 +66,7 @@ export default (amount = "5") => {
           const branch = unique.find(({ id }) => id === pickedId);
 
           if (branch) {
-            exec(`git checkout ${branch.name}`, (error, stdout, stderr) => {
+            exec(`git checkout ${branch.name}`, (error, _stdout, stderr) => {
               if (error || stderr) {
                 console.log(error ? error.message : stderr);
                 return;
