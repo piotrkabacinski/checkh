@@ -100,34 +100,6 @@ describe("Checkh", () => {
     );
   });
 
-  it("Should log formatted list of unique branches", async () => {
-    consoleStub = createConsoleStub();
-
-    let callbackFn: Function;
-
-    execStub = stub(childProcess, "exec").callsFake((...args: any[]): any => {
-      callbackFn = args[1];
-    });
-
-    readlineStub = stub(readline, "createInterface").callsFake((): any => {
-      return {
-        question: () => undefined,
-        close: () => undefined,
-      };
-    });
-
-    checkh();
-
-    callbackFn(
-      undefined,
-      notUniqueBranches.map((branch) => ` to ${branch}`).join("\n")
-    );
-
-    expect(consoleStub.args[0][0]).eq(
-      uniqueBranches.map((branch, index) => `${index}: ${branch}`).join("\n")
-    );
-  });
-
   it("Should show error message when user pick invalid branch Id", async () => {
     consoleStub = createConsoleStub();
 
@@ -163,7 +135,7 @@ describe("Checkh", () => {
     expect(consoleStub.args[0][0]).eq(`Invalid branch selection`);
   });
 
-  it("Should run `git checkout` command with selected branch Id ", async () => {
+  it("Should run `git checkout` command with selected branch name", async () => {
     consoleStub = createConsoleStub();
 
     let execCallbackFn: Function;
