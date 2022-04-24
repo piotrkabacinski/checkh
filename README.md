@@ -26,10 +26,11 @@ echo "alias checkh=\"node -e 'require(\\\"/bin/checkh.js\\\").default()'\"" >> ~
 checkh 20
 ```
 
-## Commands
+## Development commands
+
+For adjusting the script to own purposes I recommend cloning the repository. `package.json` contain only dev dependencies.
 
 ```Bash
-npm i # Script contain only dev dependencies
 npm test
 npm run build
 ```
