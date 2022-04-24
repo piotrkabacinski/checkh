@@ -15,9 +15,9 @@ const checkh = () => {
         const branches = stdout
             .split("\n")
             .map((command) => {
-            if (command)
-                return command.split("to ")[1];
-        })
+                if (command)
+                    return command.split("to ")[1];
+            })
             .filter((branch) => !!branch);
         if (!branches.length) {
             console.log("No branches to checkout");
