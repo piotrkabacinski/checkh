@@ -18,7 +18,7 @@ curl https://raw.githubusercontent.com/piotrkabacinski/checkh/master/build/check
 node -e 'require("/bin/checkh.js").default()' [reflog checkouts amount]
 ```
 
-For more convenient usage, consider applying script to some shell alias. `bash` + `.bash_profile` example:
+For more convenient usage, consider applying script to some shell alias. `.bash_profile` example:
 
 ```Bash
 echo "alias checkh=\"node -e 'require(\\\"/bin/checkh.js\\\").default()'\"" >> ~/.bash_profile
