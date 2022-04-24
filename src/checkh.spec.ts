@@ -7,6 +7,7 @@ import checkh from "./checkh";
 let consoleStub: SinonStub<any, any>;
 let execStub: SinonStub<any, any>;
 let readlineStub: SinonStub<any, any>;
+let processStub: SinonStub<any, any>;
 
 const uniqueBranches = ["Foo", "Bar", "Baz"];
 const notUniqueBranches = uniqueBranches.concat(uniqueBranches);
@@ -22,16 +23,23 @@ const createConsoleStub = () =>
   stub(console, "log").callsFake((...args) => args);
 
 describe("Checkh", () => {
+  beforeEach(() => {
+    processStub = stub(process, "argv").value([undefined, undefined]);
+  });
+
   afterEach(() => {
     if (consoleStub) consoleStub.restore();
     if (execStub) execStub.restore();
     if (readlineStub) readlineStub.restore();
+    if (processStub) processStub.restore();
   });
 
   it("Should log message when checkouts arg is invalid", () => {
     consoleStub = createConsoleStub();
 
-    checkh("not a number");
+    processStub = stub(process, "argv").value([undefined, "not a number"]);
+
+    checkh();
 
     expect(consoleStub.args[0][0]).eq("Invalid amount of checkouts");
   });
@@ -100,7 +108,7 @@ describe("Checkh", () => {
     );
   });
 
-  it("Should show error message when user pick invalid branch Id", async () => {
+  it("Should show error message when user picks invalid branch id", async () => {
     consoleStub = createConsoleStub();
 
     let execCallbackFn: Function;
@@ -135,7 +143,7 @@ describe("Checkh", () => {
     expect(consoleStub.args[0][0]).eq(`Invalid branch selection`);
   });
 
-  it("Should run `git checkout` command with selected branch name", async () => {
+  it("Should run `git checkout` command to selected branch", async () => {
     consoleStub = createConsoleStub();
 
     let execCallbackFn: Function;

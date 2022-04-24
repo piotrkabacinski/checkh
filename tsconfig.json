@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "downlevelIteration": true,
-    "module": "es2020",
+    "module": "commonjs",
     "outDir": "./build",
     "target": "esnext",
     "typeRoots": ["node_modules/@types"],

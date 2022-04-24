@@ -5,7 +5,9 @@ type Branch = {
   name: string;
 };
 
-export default (amount = "5") => {
+const checkh = () => {
+  const amount = process.argv[1] || "5";
+
   if (isNaN(Number(amount))) {
     console.log("Invalid amount of checkouts");
     return;
@@ -47,7 +49,7 @@ export default (amount = "5") => {
       const last = unique[unique.length - 1].id;
 
       readline.question(
-        `\nPick branch number (from ${first} to ${last}) to checkout or q to quit:`,
+        `\nPick branch id (from ${first} to ${last}) to checkout or q to quit:`,
         (answer) => {
           if (answer.toLowerCase() === "q") {
             readline.close();
@@ -80,3 +82,5 @@ export default (amount = "5") => {
     }
   );
 };
+
+export default checkh;

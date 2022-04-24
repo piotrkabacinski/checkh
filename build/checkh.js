@@ -1,10 +1,13 @@
-import { exec } from "child_process";
-export default (amount = "5") => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const child_process_1 = require("child_process");
+const checkh = () => {
+    const amount = process.argv[1] || "5";
     if (isNaN(Number(amount))) {
         console.log("Invalid amount of checkouts");
         return;
     }
-    exec(`git reflog | grep "checkout" | head -${amount}`, async (error, stdout, stderr) => {
+    (0, child_process_1.exec)(`git reflog | grep "checkout" | head -${amount}`, async (error, stdout, stderr) => {
         if (error || stderr) {
             console.log(`Error: ${error ? error.message : stderr}`);
             return;
@@ -25,13 +28,13 @@ export default (amount = "5") => {
             name,
         }));
         console.log(unique.map(({ id, name }) => `${id}: ${name}`).join("\n"));
-        const readline = (await import("readline")).createInterface({
+        const readline = (await Promise.resolve().then(() => require("readline"))).createInterface({
             input: process.stdin,
             output: process.stdout,
         });
         const first = unique[0].id;
         const last = unique[unique.length - 1].id;
-        readline.question(`\nPick branch number (from ${first} to ${last}) to checkout or q to quit:`, (answer) => {
+        readline.question(`\nPick branch id (from ${first} to ${last}) to checkout or q to quit:`, (answer) => {
             if (answer.toLowerCase() === "q") {
                 readline.close();
                 return;
@@ -44,7 +47,7 @@ export default (amount = "5") => {
             }
             const branch = unique.find(({ id }) => id === pickedId);
             if (branch) {
-                exec(`git checkout ${branch.name}`, (error, _stdout, stderr) => {
+                (0, child_process_1.exec)(`git checkout ${branch.name}`, (error, _stdout, stderr) => {
                     if (error || stderr) {
                         console.log(error ? error.message : stderr);
                         return;
@@ -55,3 +58,4 @@ export default (amount = "5") => {
         });
     });
 };
+exports.default = checkh;
