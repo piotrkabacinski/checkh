@@ -2,6 +2,8 @@
 
 Log list of unique branches you were on and easily switch between them.
 
+<img src="https://studio363-assets-file.s3.eu-central-1.amazonaws.com/checkh.gif" width="500" alt="Screen captured usage" />
+
 ## Usage
 
 Make sure you have [Node](https://nodejs.org/) installed (`node -v`) with preferred version (latest recommended).
@@ -21,7 +23,7 @@ node -e 'require("/bin/checkh.js").default()' [reflog checkouts amount]
 For more convenient usage, consider applying script to some shell alias. `.bash_profile` example:
 
 ```Bash
-echo "alias checkh=\"node -e 'require(\\\"/bin/checkh.js\\\").default()'\"" >> ~/.bash_profile
+echo "alias checkh=\"node -e 'require(\\\"/usr/local/bin/checkh.js\\\").default()'\"" >> ~/.bash_profile
 
 checkh 20
 ```
